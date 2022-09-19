@@ -1,0 +1,54 @@
+bagstore (sırt, laptop)
+12 ürün
+5 marka (Nike 3, Adidas 3, Bershka 1, Mango 2, Tommy Hilfiger 2)
+4 kategori (El 2, Spor 2, Sırt 7, Omuz 1)
+
+Shoulder Bags, Backpacks, Handbags, Sports Bags
+288x431
+
+#1
+Nike Y Nk Elmntl Fa19 Backpack
+569
+
+#2
+Nike Unisex Backpack
+609.90
+
+#3
+Nike Nk Acdmy Team M Duff Black Football Sports Bag
+629
+
+#4
+adidas Unisex Backpack Power Vi
+729
+
+#5
+adidas Women's Daily Hand Bag W Mm Tote
+
+#6
+adidas Unisex Blue Black White Sports Bag 45x23x20cm
+492.81
+
+#7
+Bershka Basic Tote Bag
+429.95
+
+#8
+Mango Dark Yellow Bucket Bag
+389.99
+
+#9
+Mango Crossbody Bag
+379.99
+
+#10
+Tommy Hilfiger Polyester Navy Women Crossbody Bag
+1129
+
+#11
+Tommy Hilfiger Men Sports Bag
+3325.26
+
+#12
+adidas Bag
+389.67
