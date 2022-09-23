@@ -1,11 +1,11 @@
-﻿using ApplicationCore.Entiities;
+﻿using ApplicationCore.Entities;
 using Ardalis.Specification;
 
 namespace ApplicationCore.Interfaces
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        Task<T> GetByIdAsync(int id);
+        Task<T?> GetByIdAsync(int id);
         Task<List<T>> GetAllAsync();
         Task<List<T>> GetAllAsync(ISpecification<T> specification);
         Task<T> AddAsync(T entity);
@@ -13,6 +13,6 @@ namespace ApplicationCore.Interfaces
         Task DeleteAsync(T entity);
         Task<int> CountAsync(ISpecification<T> specification);
         Task<T> FirstAsync(ISpecification<T> specification);
-        Task<T> FirstOrDefaultAsync(ISpecification<T> specification);
+        Task<T?> FirstOrDefaultAsync(ISpecification<T> specification);
     }
 }

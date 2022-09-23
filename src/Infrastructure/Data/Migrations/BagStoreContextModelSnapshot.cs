@@ -21,7 +21,7 @@ namespace Infrastructure.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ApplicationCore.Entiities.Brand", b =>
+            modelBuilder.Entity("ApplicationCore.Entities.Brand", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,7 +39,7 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("Brands");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entiities.Category", b =>
+            modelBuilder.Entity("ApplicationCore.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,7 +57,7 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entiities.Product", b =>
+            modelBuilder.Entity("ApplicationCore.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -95,15 +95,15 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entiities.Product", b =>
+            modelBuilder.Entity("ApplicationCore.Entities.Product", b =>
                 {
-                    b.HasOne("ApplicationCore.Entiities.Brand", "Brand")
+                    b.HasOne("ApplicationCore.Entities.Brand", "Brand")
                         .WithMany()
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ApplicationCore.Entiities.Category", "Category")
+                    b.HasOne("ApplicationCore.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
