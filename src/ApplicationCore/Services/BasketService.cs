@@ -7,10 +7,12 @@ namespace ApplicationCore.Services
     public class BasketService : IBasketService
     {
         private readonly IRepository<Basket> _basketRepo;
+        private readonly IRepository<Product> _productRepo;
 
-        public BasketService(IRepository<Basket> basketRepo)
+        public BasketService(IRepository<Basket> basketRepo, IRepository<Product> productRepo)
         {
             _basketRepo = basketRepo;
+            _productRepo = productRepo;
         }
         public async Task<Basket> AddItemToBasketAsync(string buyerId, int productId, int quantity)
         {
@@ -30,7 +32,8 @@ namespace ApplicationCore.Services
                 basketItem = new BasketItem()
                 {
                     ProductId = productId,
-                    Quantity = quantity
+                    Quantity = quantity,
+                    Product = await _productRepo.GetByIdAsync(productId) ?? null!
                 };
                 basket.Items.Add(basketItem);
             }
