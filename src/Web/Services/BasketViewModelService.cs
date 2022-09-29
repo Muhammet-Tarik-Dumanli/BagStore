@@ -11,7 +11,7 @@ namespace Web.Services
         private string? UserId => HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
         private string? AnonId => HttpContext?.Request.Cookies[Constants.BASKET_COOKIENAME];
         private string BuyerId => UserId ?? AnonId ?? CreateAnonymousId();
-        
+
         private string creatednonId = null!;
 
         private string CreateAnonymousId()
@@ -38,21 +38,13 @@ namespace Web.Services
         public async Task<BasketViewModel> AddItemToBasketAsync(int productId, int quantityId)
         {
             var basket = await _basketService.AddItemToBasketAsync(BuyerId, productId, quantityId);
+            return basket.ToBasketViewModel();
+        }
 
-            return new BasketViewModel()
-            {
-                Id = basket.Id,
-                BuyerId = BuyerId,
-                Items = basket.Items.Select(x => new BasketItemViewModel()
-                {
-                    Id = x.Id,
-                    PictureUri = x.Product.PictureUri,
-                    ProductId = x.ProductId,
-                    ProductName = x.Product.Name,
-                    Quantity = x.Quantity,
-                    UnitPrice = x.Product.Price
-                }).ToList()
-            };
+        public async Task<BasketViewModel> GetBasketViewModelAsync()
+        {
+            var basket = await _basketService.GetOrCreateBasketAsync(BuyerId);
+            return basket.ToBasketViewModel();
         }
     }
 }
