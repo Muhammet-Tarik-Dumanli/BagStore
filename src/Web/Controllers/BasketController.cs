@@ -52,5 +52,32 @@ namespace Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Checkout()
+        {
+            var vm = new CheckoutViewModel()
+            {
+                Basket = await _basketViewModelService.GetBasketViewModelAsync()
+            };
+            return View(vm);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Checkout(CheckoutViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                await _basketViewModelService.CompleteCheckoutAsync(vm.Street!, vm.City!, vm.State!, vm.Country!, vm.ZipCode!);
+                return RedirectToAction("OrderConfirmed");
+            }
+
+            vm.Basket = await _basketViewModelService.GetBasketViewModelAsync();
+            return View(vm);
+        }
+
+        public async Task<IActionResult> OrderConfirmed()
+        {
+            return View();
+        }
     }
 }
